@@ -30,8 +30,10 @@ class User < ApplicationRecord
   
   has_many :comments, foreign_key: :author_id, class_name: "Comment"
   
-  has_many :sent_follow_request, foreign_key: :sender_id, class_name: "FollowRequest"
+  has_many :accepted_sent_follow_request, -> { where(status: "accepted") }, foreign_key: :sender_id, class_name: "FollowRequest"
+ 
   has_many :received_follow_request, foreign_key: :recipient_id, class_name: "FollowRequest"
+  has_many :accepted_received_follow_request, -> {where(status: "accepted")}, foreign_key: :recipient_id, class_name: "FollowRequest"
 
   has_many :likes, foreign_key: :fan_id, class_name: "Like"
  
@@ -39,6 +41,6 @@ class User < ApplicationRecord
 
   has_many :liked_photos, through: :likes, source: :photo
 
-  has_many :leaders, through: :sent_follow_request, source: :
+  has_many :leaders, through: :accepted_sent_follow_request, source: :recipient
 
 end
