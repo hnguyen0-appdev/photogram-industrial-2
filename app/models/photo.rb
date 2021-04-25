@@ -27,4 +27,9 @@ class Photo < ApplicationRecord
   has_many :likes, foreign_key: :photo_id, class_name: "Like"
 
   has_many :fans, through: :likes, source: :fan
+
+  validates :caption, presence: true
+  
+  validates :image, presence: true
+
 end
