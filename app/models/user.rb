@@ -41,6 +41,6 @@ class User < ApplicationRecord
   has_many :received_follow_requests, class_name: "FollowRequest", foreign_key: :recipient_id
   has_many :sent_follow_requests, class_name: "FollowRequest", foreign_key: :sender_id
 
-  validates :username, presence: true, uniqueness: { case_sensitive: false }
+  validates :username, presence: false, uniqueness: { case_sensitive: false }
 
 end
