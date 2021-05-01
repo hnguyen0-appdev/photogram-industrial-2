@@ -31,10 +31,14 @@
 
              
             </li>
-          <%end%>
         </ul>
+
+        <div class="card-body">
+          <%= render"comments/form", comment: Comment.new %>
+        </div>
+        
       </div>
-  </div>
+    </div>
 </div>
 
 <% end %>
